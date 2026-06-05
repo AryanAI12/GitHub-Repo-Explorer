@@ -5,8 +5,8 @@ their public repositories. Built with React + Vite (frontend) and
 Node.js + Express (backend).
 
 ## Live Demo
-- Frontend: [Coming soon]
-- Backend: [Coming soon]
+- Frontend: https://git-hub-repo-explorer-alpha.vercel.app/
+- Backend: https://github-repo-explorer-1.onrender.com
 
 ## Tech Stack
 
