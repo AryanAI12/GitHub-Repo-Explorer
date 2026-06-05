@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import RepoCard from './RepoCard'
-import { getLanguageStats } from '../utils/formatters'
+import RepoCard from './repocard'
 
 function RepoList({ repos, hasMore, onLoadMore }) {
   const [sortBy, setSortBy] = useState('updated')
@@ -10,8 +9,6 @@ function RepoList({ repos, hasMore, onLoadMore }) {
     if (sortBy === 'name') return a.name.localeCompare(b.name)
     return new Date(b.updated_at) - new Date(a.updated_at)
   })
-
-  const langStats = getLanguageStats(repos)
 
   return (
     <div className="repo-section">
@@ -27,26 +24,6 @@ function RepoList({ repos, hasMore, onLoadMore }) {
           <option value="name">Name A-Z</option>
         </select>
       </div>
-
-      {langStats.length > 0 && (
-        <div className="lang-chart">
-          <p className="lang-chart-title">Top Languages</p>
-          <div className="lang-bars">
-            {langStats.map(([lang, count]) => (
-              <div key={lang} className="lang-bar-row">
-                <span className="lang-name">{lang}</span>
-                <div className="lang-bar-bg">
-                  <div
-                    className="lang-bar-fill"
-                    style={{ width: `${(count / repos.length) * 100}%` }}
-                  ></div>
-                </div>
-                <span className="lang-count">{count}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
 
       <div className="repo-list">
         {sorted.map(repo => (

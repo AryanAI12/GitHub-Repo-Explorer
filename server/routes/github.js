@@ -5,6 +5,11 @@ import { get, set } from '../cache/store.js'
 const router = express.Router()
 const GITHUB_BASE = 'https://api.github.com'
 
+const githubHeaders = {
+  Accept: 'application/vnd.github.v3+json',
+  Authorization: `Bearer ${process.env.GITHUB_TOKEN}`
+}
+
 router.get('/user/:username', async (req, res) => {
   const { username } = req.params
   const cacheKey = `user:${username}`
@@ -14,7 +19,7 @@ router.get('/user/:username', async (req, res) => {
 
   try {
     const { data } = await axios.get(`${GITHUB_BASE}/users/${username}`, {
-      headers: { Accept: 'application/vnd.github.v3+json' }
+      headers: githubHeaders
     })
     set(cacheKey, data)
     res.json({ ...data, fromCache: false })
@@ -38,7 +43,10 @@ router.get('/user/:username/repos', async (req, res) => {
   try {
     const { data } = await axios.get(
       `${GITHUB_BASE}/users/${username}/repos`,
-      { params: { page, per_page, sort: 'updated' } }
+      {
+        headers: githubHeaders,
+        params: { page, per_page, sort: 'updated' }
+      }
     )
     set(cacheKey, data)
     res.json(data)
