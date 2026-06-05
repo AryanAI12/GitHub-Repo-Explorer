@@ -87,28 +87,30 @@ open_issues_count
 
 ## Project Structure
 
+```
 GitHub-Repo-Explorer/
-├── client/                   # React frontend
+├── client/                  # React frontend
 │   └── src/
 │       ├── components/
-│       │   ├── searchbar.jsx      # Search input with debounce + history
-│       │   ├── userprofile.jsx    # User profile card with cache badge
-│       │   ├── repolist.jsx       # Repo list with sorting
-│       │   ├── repocard.jsx       # Expandable repo card
-│       │   └── skeletonloa.jsx    # Loading skeleton
+│       │   ├── searchbar.jsx     # Search input with history
+│       │   ├── userprofile.jsx   # User profile card with cache badge
+│       │   ├── repolist.jsx      # Repo list with sorting
+│       │   ├── repocard.jsx      # Expandable repo card
+│       │   └── skeletonloa.jsx   # Loading skeleton
 │       ├── hooks/
-│       │   └── usersearch.js      # Custom hook for API calls + state
+│       │   └── usersearch.js     # Custom hook for API calls
 │       ├── utils/
-│       │   └── formatters.js      # Date, number, localStorage helpers
+│       │   └── formatters.js     # Date, number, localStorage helpers
 │       └── App.jsx
-├── server/                   # Node.js backend
+├── server/                  # Node.js backend
 │   ├── cache/
-│   │   └── store.js          # In-memory cache with 60s TTL
+│   │   └── store.js         # In-memory cache with 60s TTL
 │   ├── routes/
-│   │   └── github.js         # GitHub API proxy routes
-│   └── index.js              # Express app entry point
+│   │   └── github.js        # GitHub API proxy routes
+│   └── index.js             # Express app entry point
 ├── .gitignore
 └── README.md
+```
 
 ## Features
 
