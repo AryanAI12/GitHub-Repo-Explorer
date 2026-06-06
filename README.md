@@ -143,7 +143,6 @@ went through a dedicated backend layer, keeping credentials server-side.
 ## Next Steps
 
 - Language distribution chart showing breakdown of languages across repos
-- GitHub OAuth token for authenticated requests (higher rate limits)
 - Redis cache for persistence across server restarts
 - Dark / light mode toggle
 - Unit tests with Jest/Vitest for cache module and API routes
